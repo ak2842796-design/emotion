@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a35">
+  <title>EmotionLens — AI Emotion Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="EmotionLens home">
+        <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7c-5-5-13-1-13 6-7 1-9 10-4 14-3 7 2 13 9 12 3 5 8 4 8-1V7Z"/><path d="M24 7c5-5 13-1 13 6 7 1 9 10 4 14 3 7-2 13-9 12-3 5-8 4-8-1V7Z"/><path d="M14 17h5m-8 10h8m10-10h5m-5 10h8M19 13l5 5 5-5M19 33l5-5 5 5"/></svg></span>
+        <span><strong>Emotion<span>Lens</span></strong><small>AI EMOTION DETECTION</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-item active" href="#dashboard"><span class="nav-icon">⌂</span> Dashboard <span class="nav-arrow">↗</span></a>
+        <a class="nav-item" href="#analyzer"><span class="nav-icon">✳</span> Text analyzer</a>
+        <a class="nav-item" href="/docs" target="_blank" rel="noreferrer"><span class="nav-icon">▤</span> API documentation <span class="external">↗</span></a>
+        <a class="nav-item" href="#system"><span class="nav-icon">⌁</span> System status</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-card">
+          <span class="status-orb" id="sideStatusOrb"></span>
+          <div><strong id="sideStatusText">Checking API…</strong><small>BiGRU inference service</small></div>
+        </div>
+        <div class="side-footer"><span class="tiny-logo">✦</span> Powered by FastAPI<br><span class="footer-sub">Built with deep learning</span></div>
+      </div>
+    </aside>
+
+    <main class="main" id="dashboard">
+      <header class="topbar">
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Emotion dashboard</strong></div>
+        <div class="top-actions"><span class="live-dot"></span><span id="topStatus">Connecting to API</span><span class="avatar">EL</span></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> INTELLIGENCE, IN EVERY SENTENCE</div>
+          <h1>Understand the <span>feeling</span><br>behind the words.</h1>
+          <p>Analyze text with your BiGRU deep-learning model and explore the emotions expressed in every message.</p>
+          <a class="hero-link" href="#analyzer">Start analyzing <span>↘</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="art-core"><svg viewBox="0 0 100 100"><path d="M50 15c-12-13-31-4-31 13-15 3-20 22-8 32-6 16 4 29 19 27 7 11 20 8 20-3V15Z"/><path d="M50 15c12-13 31-4 31 13 15 3 20 22 8 32 6 16-4 29-19 27-7 11-20 8-20-3V15Z"/><path d="M30 38h12m-17 20h17m16-20h12M50 26v48m-13-5 13-10 13 10"/></svg></div>
+          <span class="float-chip chip-one">✦ Deep learning</span><span class="float-chip chip-two">◉ 6 emotions</span><span class="float-chip chip-three">↗ Real-time inference</span>
+        </div>
+        <div class="hero-glow"></div>
+      </section>
+
+      <section class="metrics" aria-label="Model overview">
+        <article class="metric-card"><div class="metric-icon blue">⌁</div><div><p>MODEL ARCHITECTURE</p><strong>BiGRU</strong><small>Bidirectional recurrent network</small></div><span class="metric-tag">DEEP LEARNING</span></article>
+        <article class="metric-card"><div class="metric-icon violet">◈</div><div><p>EMOTION CLASSES</p><strong>06 <span>classes</span></strong><small>Six distinct emotion categories</small></div><span class="metric-tag violet-tag">MULTI-CLASS</span></article>
+        <article class="metric-card"><div class="metric-icon green">⌘</div><div><p>MAX SEQUENCE LENGTH</p><strong>100 <span>tokens</span></strong><small>Padding and truncation enabled</small></div><span class="metric-tag green-tag">NLP PIPELINE</span></article>
+      </section>
+
+      <section class="workspace-grid" id="analyzer">
+        <article class="panel input-panel">
+          <div class="panel-heading"><div><span class="section-kicker">01 / INPUT</span><h2>Text analyzer</h2><p>What would you like to understand?</p></div><div class="heading-icon">✎</div></div>
+          <label class="field-label" for="inputText">YOUR TEXT <span>Required</span></label>
+          <div class="textarea-wrap"><textarea id="inputText" maxlength="2000" placeholder="Write a sentence or paste a message here…"></textarea><div class="textarea-meta"><span id="inputHint">Your text is processed by your local API.</span><span><b id="charCount">0</b> / 2000</span></div></div>
+          <div class="examples-title">QUICK EXAMPLES <span>Click to try</span></div>
+          <div class="example-list">
+            <button class="example" data-text="I am feeling very happy today!"><span class="emoji">☀</span><span><b>Feeling happy</b><small>I am feeling very happy today!</small></span><span class="example-arrow">↗</span></button>
+            <button class="example" data-text="I am so scared about what might happen."><span class="emoji fear">◌</span><span><b>Feeling afraid</b><small>I am so scared about what might happen.</small></span><span class="example-arrow">↗</span></button>
+            <button class="example" data-text="This situation is really making me angry."><span class="emoji anger">⚡</span><span><b>Feeling angry</b><small>This situation is really making me angry.</small></span><span class="example-arrow">↗</span></button>
+          </div>
+          <div class="form-actions"><button id="clearBtn" class="btn btn-quiet" type="button">Clear</button><button id="analyzeBtn" class="btn btn-primary" type="button"><span class="btn-symbol">✦</span><span id="analyzeLabel">Analyze emotion</span><span class="btn-arrow">→</span></button></div>
+          <p class="privacy-note"><span>◈</span> Predictions come from your configured model. Results are estimates, not psychological advice.</p>
+        </article>
+
+        <article class="panel result-panel">
+          <div class="panel-heading"><div><span class="section-kicker">02 / RESULTS</span><h2>Prediction overview</h2><p>Your model output appears here.</p></div><div class="result-status" id="resultBadge"><span></span> WAITING</div></div>
+          <div class="empty-state" id="emptyState"><div class="empty-illustration"><span class="empty-spark">✦</span><div class="empty-face">◡</div></div><h3>Ready when you are</h3><p>Enter a sentence and run the analyzer to see the predicted emotion and confidence breakdown.</p><div class="empty-mini"><span>01</span> Add your text <i>→</i> <span>02</span> Analyze <i>→</i> <span>03</span> Explore</div></div>
+          <div class="result-content hidden" id="resultContent">
+            <div class="prediction-feature"><div class="emotion-symbol" id="emotionSymbol">☺</div><div class="prediction-text"><span class="prediction-caption">PREDICTED EMOTION</span><h3 id="predictedEmotion">Joy</h3><p id="predictionSubtext">The model's highest-scoring class</p></div><div class="confidence"><strong id="confidenceValue">0%</strong><span>confidence</span></div></div>
+            <div class="confidence-track"><div id="confidenceBar"></div></div>
+            <div class="probability-heading"><div><h3>Emotion probabilities</h3><p>Model scores across all six classes</p></div><span class="score-label">MODEL SCORES</span></div>
+            <div class="probability-list" id="probabilityList"></div>
+            <div class="result-foot"><span>✦</span><p>Confidence represents the model score, not a verified measure of a person's emotional state.</p></div>
+          </div>
+          <div class="loading-state hidden" id="loadingState"><div class="loader"></div><strong>Analyzing your text</strong><p>Sending input to the BiGRU model…</p></div>
+          <div class="error-state hidden" id="errorState"><div class="error-mark">!</div><h3>Couldn’t analyze this text</h3><p id="errorMessage">Please check that the API is running and try again.</p><button class="btn btn-quiet" id="retryBtn">Try again</button></div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel info-panel" id="system"><div class="bottom-heading"><div><span class="bottom-icon">⌘</span><div><h2>Model information</h2><p>Configuration for this inference service</p></div></div><span class="config-badge">CONFIGURED</span></div><div class="info-table"><div><span>Model type</span><strong>BiGRU · Deep Learning</strong></div><div><span>Sequence length</span><strong>100 tokens</strong></div><div><span>Output classes</span><strong>6 emotions</strong></div><div><span>API endpoint</span><strong class="mono">POST /predict</strong></div></div></article>
+        <article class="panel status-panel"><div class="bottom-heading"><div><span class="bottom-icon green-icon">⌁</span><div><h2>Service health</h2><p>Live connection to FastAPI</p></div></div><span class="status-pill" id="healthPill"><i></i><span id="healthPillText">Checking</span></span></div><div class="service-row"><span class="service-indicator" id="serviceIndicator"></span><div><strong>Emotion prediction API</strong><small id="healthDetail">Checking /health endpoint…</small></div><button class="refresh-btn" id="refreshHealth" title="Refresh health status" aria-label="Refresh health status">↻</button></div><div class="service-meta"><span>Endpoint</span><code>/health</code><span class="service-spacer"></span><span id="lastChecked">Last checked —</span></div></article>
+      </section>
+      <footer class="main-footer"><span>EmotionLens <b>•</b> AI Emotion Detection</span><span>Built with FastAPI &amp; TensorFlow <b>•</b> Powered by your BiGRU model</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
